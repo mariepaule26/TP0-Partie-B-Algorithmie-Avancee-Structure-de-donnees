@@ -1,4 +1,4 @@
-TP/TD d'algorithmie avancee - Partie B
+TP0 d'algorithmie avancee - Partie B
 ======================================
 
 Cette partie reprend les deux structures vues dans les TP de
