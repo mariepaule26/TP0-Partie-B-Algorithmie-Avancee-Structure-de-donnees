@@ -1,0 +1,21 @@
+# Fichiers generes par la compilation C
+*.exe
+*.o
+*.obj
+*.out
+
+# Fichiers de compilation et journaux locaux
+compile.log
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# Fichiers temporaires des editeurs
+.vscode/*
+!.vscode/c_cpp_properties.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
+*.swp
+*.swo

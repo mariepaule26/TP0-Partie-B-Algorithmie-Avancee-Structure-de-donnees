@@ -1,0 +1,62 @@
+PARTIE B 
+=========
+
+1. Arbre générique
+------------------
+
+Dans notre arbre binaire, chaque nœud possède deux pointeurs : `filsG`
+et `filsD`. Cela ne suffit plus si un nœud doit avoir un nombre quelconque
+de fils.
+
+Une première solution consiste à stocker un tableau dynamique de pointeurs
+vers les enfants, avec le nombre d'enfants associé.
+
+Une autre solution consiste à utiliser deux liens :
+
+  premier_fils
+  frere_suivant
+
+Dans ce cas, `premier_fils` pointe vers le premier enfant et
+`frere_suivant` permet de parcourir les autres enfants du même parent.
+Le parcours préfixe commence par le nœud, puis parcourt ses enfants.
+
+2. Graphe quelconque
+--------------------
+
+Un graphe peut contenir des cycles et plusieurs chemins entre deux
+sommets. On ne peut donc pas le représenter comme un simple arbre.
+
+Pour le stocker, on peut utiliser :
+
+- une matrice d'adjacence, adaptée aux graphes denses ;
+- des listes d'adjacence, plus économiques lorsque le graphe possède
+  relativement peu d'arêtes.
+
+Avec les listes d'adjacence, chaque sommet possède une liste contenant
+ses voisins. Pour une arête non orientée entre `u` et `v`, on ajoute `v`
+dans la liste de `u` et `u` dans celle de `v`. Pour un graphe orienté,
+on ajoute seulement l'arc dans le sens prévu.
+
+Exemple de structures :
+
+  typedef struct arc {
+      int destination;
+      struct arc *suivant;
+  } arc;
+
+  typedef struct sommet {
+      int identifiant;
+      arc *voisins;
+  } sommet;
+
+  typedef struct graphe {
+      sommet *sommets;
+      size_t nombre_sommets;
+  } graphe;
+
+Lors d'un parcours en profondeur ou en largeur, il faut garder la liste
+des sommets déjà visités. Cela évite de tourner indéfiniment lorsqu'un
+cycle est présent.
+
+Ces extensions sont proposées pour répondre à la question du TP. Leur
+implémentation complète n'est pas demandée dans cette partie.
